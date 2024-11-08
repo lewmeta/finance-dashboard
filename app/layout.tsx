@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import localFont from "next/font/local";
 
 import { QueryProviders } from "@/providers/query-provider";
+import { SheetProvider } from "@/providers/sheet-provider";
 
 import "./globals.css";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <QueryProviders>
+          <SheetProvider/>
             {children}
           </QueryProviders>
         </body>
