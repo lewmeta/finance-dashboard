@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import { QueryProviders } from "@/providers/query-provider";
 import { SheetProvider } from "@/providers/sheet-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 
@@ -35,7 +36,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <QueryProviders>
-          <SheetProvider/>
+            <SheetProvider />
+            <Toaster />
             {children}
           </QueryProviders>
         </body>
