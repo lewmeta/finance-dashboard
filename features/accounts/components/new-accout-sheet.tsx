@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account"
 import { AccountForm } from "@/features/accounts/components/account-form"
 import { insertAccountSchema } from '@/db/schema'
-import { useCreateAccount } from '@/features/accounts/hooks/use-create-account'
+import { useCreateAccount } from '@/features/accounts/api/use-create-account'
 
 import {
     SheetHeader,
