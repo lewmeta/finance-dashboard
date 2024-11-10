@@ -148,7 +148,7 @@ const app = new Hono()
     }
   )
   .post(
-    '/bulk-update',
+    '/bulk-create',
     clerkMiddleware(),
     zValidator(
       'json',
