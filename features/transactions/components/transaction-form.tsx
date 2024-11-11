@@ -94,6 +94,25 @@ export const TransactionForm = ({
                         </FormItem>
                     )}
                 />
+                <FormField
+                    name='categoryId'
+                    control={form.control}
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Category</FormLabel>
+                            <FormControl>
+                                <Select
+                                    placeholder='Select a category'
+                                    options={categoryOptions}
+                                    onCreate={onCreateCategory}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    disabled={disabled}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    )}
+                />
                 <Button className='w-full' disabled={disabled}>
                     {id ? 'Save changes' : 'Create account'}
                 </Button>
