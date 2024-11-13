@@ -8,6 +8,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { client } from '@/lib/hono'
 import { formatCurrency } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Actions } from "./actions"
 
@@ -66,7 +67,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Date
+          Category
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -104,7 +105,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Date
+          Amount
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -113,7 +114,29 @@ export const columns: ColumnDef<ResponseType>[] = [
       const amount = parseFloat(row.getValue('amount'));
 
       return (
-        <span>{formatCurrency(amount)}</span>
+        <Badge 
+        variant={amount < 0 ? 'destructive' : 'default'}
+        className='text-sm font-medium px-3.5 py-2.5'
+        >{formatCurrency(amount)}</Badge>
+      )
+    }
+  },
+  {
+    accessorKey: "account",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Account
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <span>{row.original.account}</span>
       )
     }
   },
