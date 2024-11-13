@@ -6,6 +6,7 @@ import { format } from "date-fns"
 import { ColumnDef } from "@tanstack/react-table"
 
 import { client } from '@/lib/hono'
+import { formatCurrency } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Actions } from "./actions"
@@ -110,9 +111,9 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue('amount'));
-      
+
       return (
-        <span>{row.original.category}</span>
+        <span>{formatCurrency(amount)}</span>
       )
     }
   },
