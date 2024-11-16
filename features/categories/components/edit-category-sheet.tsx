@@ -68,7 +68,6 @@ export const EditCategorySheet = () => {
         { name: categoryQuery.data.name }
         : { name: '' }
 
-    console.log({ defaultValues: defaultValues })
     return (
         <>
             <ConfirmDialog />
