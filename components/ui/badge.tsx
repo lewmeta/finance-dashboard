@@ -18,12 +18,15 @@ const badgeVariants = cva(
         primary: "border-transparent bg-blue-500/10 text-blue-500"
       },
     },
+    defaultVariants: {
+      variant: "default",
+    },
   }
 )
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof badgeVariants> { }
+    VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
