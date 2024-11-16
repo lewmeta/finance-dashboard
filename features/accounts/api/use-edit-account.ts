@@ -29,7 +29,7 @@ export const useEditAccount = (id?: string) => {
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
 
-      // TODO: Invalidate summery and transactions
+      // TODO: Invalidate summery
     },
     onError: () => {
       toast.error("failed to edit account!");
