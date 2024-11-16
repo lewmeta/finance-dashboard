@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Actions } from "./actions"
 import { AccountColumn } from "./account-column"
+import { CategoryColumn } from "./category-column"
 
 export type ResponseType = InferResponseType<typeof client.api.transactions.$get, 200>['data'][0];
 
@@ -75,7 +76,10 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
     cell: ({ row }) => {
       return (
-        <span>{row.original.category}</span>
+        <CategoryColumn
+          category={row.original.category}
+          categoryId={row.original.categoryId}
+        />
       )
     }
   },
@@ -94,7 +98,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
     cell: ({ row }) => {
       return (
-        <span>{row.original.category}</span>
+        <span>{row.original.payee}</span>
       )
     }
   },

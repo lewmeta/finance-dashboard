@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sheet"
 import { Loader2 } from 'lucide-react'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const formSchema = insertCategorySchema.pick({
     name: true,
 })
@@ -33,7 +34,7 @@ export const EditCategorySheet = () => {
         'You are about to delete this category'
     )
 
-    const accountQuery = useGetCategory(id);
+    const categoryQuery = useGetCategory(id);
     const editMutation = useEditCategory(id);
     const deleteMutation = useDeleteCategory(id);
 
@@ -41,7 +42,7 @@ export const EditCategorySheet = () => {
         editMutation.isPending ||
         deleteMutation.isPending;
 
-    const isLoading = accountQuery.isLoading;
+    const isLoading = categoryQuery.isLoading;
 
     const onSubmit = (values: FormValues) => {
         editMutation.mutate(values, {
@@ -63,11 +64,11 @@ export const EditCategorySheet = () => {
         }
     }
 
-    const defaultValues = accountQuery.data ?
-        { name: accountQuery.data.name }
-        :
-        { name: '' }
+    const defaultValues = categoryQuery.data ?
+        { name: categoryQuery.data.name }
+        : { name: '' }
 
+    console.log({ defaultValues: defaultValues })
     return (
         <>
             <ConfirmDialog />

@@ -58,7 +58,7 @@ const app = new Hono()
           name: categories.name,
         })
         .from(categories)
-        .where(eq(categories.userId, auth.userId));
+        .where(and(eq(categories.userId, auth.userId), eq(categories.id, id)));
 
       if (!data) {
         return c.json({ error: "Category not found!" }, 404);
