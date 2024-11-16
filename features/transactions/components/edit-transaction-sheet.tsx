@@ -2,7 +2,6 @@
 
 import { z } from 'zod'
 
-import { useOpenAccount } from '@/features/accounts/hooks/use-open-account'
 import { useGetTransaction } from '@/features/transactions/api/use-get-transaction'
 import { insertTransactionSchema } from '@/db/schema'
 import { useDeleteAccount } from '@/features/accounts/api/use-delete-account'
@@ -22,6 +21,7 @@ import { useGetAccounts } from '@/features/accounts/api/use-get-accounts'
 import { useCreateAccount } from '@/features/accounts/api/use-create-account'
 import { TransactionForm } from './transaction-form'
 import { useEditTransaction } from '../api/use-edit-transaction'
+import { useOpenTransaction } from '../hooks/use-open-transaction'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const formSchema = insertTransactionSchema.omit({
@@ -31,7 +31,7 @@ const formSchema = insertTransactionSchema.omit({
 type FormValues = z.input<typeof formSchema>
 
 export const EditTransactionSheet = () => {
-    const { isOpen, onClose, id } = useOpenAccount();
+    const { isOpen, onClose, id } = useOpenTransaction();
 
     const [ConfirmDialog, confirm] = useConfirm(
         'Are you sure?',
